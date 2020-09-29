@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+             include ./email.css
+    body(leftmargin='0', marginwidth='0', topmargin='0', marginheight='0', offset='0', style='width:100% ;-webkit-text-size-adjust:none;margin:0;padding:0;background-color:#FAFAFA;')
+    center
+      table#backgroundTable(border='0', cellpadding='0', cellspacing='0', height='100%', width='100%', style='height:100% ;margin:0;padding:0;width:100% ;background-color:#FAFAFA;')
+        tbody
+          tr
+            td(align='center', valign='top', style='border-collapse:collapse;')
+              // // Begin Template Preheader \\
+              table#templatePreheader(border='0', cellpadding='10', cellspacing='0', width='450', style='background-color:#FAFAFA;')
+                tbody
+                  tr
+                    td.preheaderContent(valign='top', style='border-collapse:collapse;')
+                      // // Begin Module: Standard Preheader \\
+                      table(border='0', cellpadding='10', cellspacing='0', width='100%')
+                        tbody
+                          tr
+                            td(valign='top', style='border-collapse:collapse;')
+                              //
+                                <div mc:edit="std_preheader_content">
+                                Use this area to offer a short teaser of your email's content. Text here will show in the preview area of some email clients.
+                                </div>
+                      // // End Module: Standard Preheader \\
+                      // // End Template Preheader \\
+                      table#templateContainer(border='0', cellpadding='0', cellspacing='0', width='450', style='border:1px none #DDDDDD;background-color:#FFFFFF;')
+                        tbody
+                          tr
+                            td(align='center', valign='top', style='border-collapse:collapse;')
+                              // // Begin Template Header \\
+                              table#templateHeader(border='0', cellpadding='0', cellspacing='0', width='450', style='background-color:#FFFFFF;border-bottom:0;')
+                                tbody
+                                  tr
+                                    td.headerContent.centeredWithBackground(style='border-collapse:collapse;color:#202020;font-family:Arial;font-size:34px;font-weight:bold;line-height:100%;padding:0;text-align:center;vertical-align:middle;background-color:#F4EEE2;padding-bottom:20px;padding-top:20px;')
+                                      // // Begin Module: Standard Header Image \\
+                                      img(width='130', src='https://atavist-static.s3.amazonaws.com/prototype_assets/Atavist-logo-with-mark.png', style='width:130px;max-width:130px;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;', id='headerImage campaign-icon')
+                                      // // End Module: Standard Header Image \\
+                                      // // End Template Header \\
+                          tr
+                            td(align='center', valign='top', style='border-collapse:collapse;')
+                              // // Begin Template Body \\
+                              table#templateBody(border='0', cellpadding='0', cellspacing='0', width='450')
+                                tbody
+                                  tr
+                                    td.bodyContent(valign='top', style='border-collapse:collapse;background-color:#FFFFFF;')
+                                      // // Begin Module: Standard Content \\
+                                      table(border='0', cellpadding='20', cellspacing='0', width='100%', style='padding-bottom:10px;')
+                                        tbody
+                                          tr
+                                            td.mainContainer(valign='top', style='padding-bottom:1rem;border-collapse:collapse;')
+                                              div(style='text-align:center;color:#505050;font-family:Arial;font-size:14px;line-height:150%;')
+                                                h1.h1(style='color:#202020;display:block;font-family:Arial;font-size:24px;font-weight:bold;line-height:100%;margin-top:20px;margin-right:0;margin-bottom:20px;margin-left:0;text-align:center;') Verifique su correo electrónico
+                                                //
+                                                  <h2 class="h2">Heading 2</h2>
+                                                  <h3 class="h3">Heading 3</h3>
+                                                  <h4 class="h4">Heading 4</h4>
+                                                p Haga clic en el botón de abajo para verificar su correo electrónico.
+                                          tr
+                                            td(align='center', style='border-collapse:collapse;')
+                                              table(border='0', cellpadding='0', cellspacing='0', style='padding-bottom:10px;')
+                                                tbody
+                                                  tr(align='center')
+                                                    td(align='center', valign='middle', style='border-collapse:collapse;')
+                                                      a.buttonText(href='#', target='_blank', style='color: #4A90E2;text-decoration: none;font-weight: normal;display: block;border: 2px solid #585858;padding: 10px 80px;font-family: Arial;') Verificar
+                                      // // End Module: Standard Content \\
+                                      // // End Template Body \\
+                          tr
+                            td(align='center', valign='top', style='border-collapse:collapse;')
+                              // // Begin Support Section \\
+                              table#supportSection(border='0', cellpadding='10', cellspacing='0', width='450', style='background-color:white;font-family:arial;font-size:12px;border-top:1px solid #e4e4e4;')
+                                tbody
+                                  tr
+                                    td.supportContent(valign='top', style='border-collapse:collapse;background-color:white;font-family:arial;font-size:12px;border-top:1px solid #e4e4e4;')
+                                      // // Begin Module: Standard Footer \\
+                                      table(border='0', cellpadding='10', cellspacing='0', width='100%')
+                                        tbody
+                                          tr
+                                            td(valign='top', width='100%', style='border-collapse:collapse;')
+                                              br
+                                              div(style='text-align: center; color: #c9c9c9;')
+                                                p
+                                                  | Questions? Get your answers here: 
+                                                  a(href='http://help.atavist.com', style='color:#4a90e2;font-weight:normal;text-decoration:underline; font-size: 12px;') Help Center
+                                                  | .
+                                              br
+                                      // // End Module: Standard Footer \\
+                                      // // Begin Support Section \\
+                          tr
+                            td(align='center', valign='top', style='border-collapse:collapse;')
+                              // // Begin Template Footer \\
+                              table#templateFooter(border='0', cellpadding='10', cellspacing='0', width='450', style='background-color:#FFFFFF;border-top:0;')
+                                tbody
+                                  tr
+                                    td.footerContent(valign='top', style='padding-left:0;border-collapse:collapse;background-color:#fafafa;')
+                                      div(style='text-align:center;color:#c9c9c9;font-family:Arial;font-size:11px;line-height:150%;')
+                                        p(style='text-align:left;margin:0;margin-top:2px;') Atavist | Brooklyn, New York, 11201 | Copyright © 2015 | All rights reserved
+                                      // // End Module: Standard Footer \\
+                                      // // End Template Footer \\
+                      br
