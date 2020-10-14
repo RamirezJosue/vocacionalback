@@ -15,30 +15,32 @@ const getUsuario = async (req, res) => {
 }
 
 const crearUsuario = async(req, res = response) => {
-    const { email, password } = req.body;
+    const {email, nombres, celular, colegio, localidad } = req.body;
     try {
         const existeEmail = await Usuario.findOne({ email });
+        // Si el email estaba registrado simplemente la data se remplaza
         if (existeEmail) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'El correo ya está registrado'
+            existeEmail.nombres = nombres;
+            existeEmail.email = email;
+            existeEmail.celular = celular;
+            existeEmail.colegio = colegio;
+            existeEmail.localidad = localidad;
+            const usuario =  await existeEmail.save();
+            return res.json({
+                ok: true,
+                usuario
             });
         }
 
+        // Se crear nuevo usuario
         const usuario = new Usuario(req.body);
-        // Encriptar password
-        const salt = bcrypt.genSaltSync();
-        usuario.password = bcrypt.hashSync(password, salt);
         
         // Guardar usuario
         await usuario.save();
 
-        // Generar el TOKEN - JWT
-        const token = await generarJWT(usuario.id);
         res.json({
             ok: true,
-            usuario,
-            token
+            usuario
         });
     } catch (error) {
         console.log(error);

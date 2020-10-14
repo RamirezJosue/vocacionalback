@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path')
 
-const { dbConnection } = require('./database/config')
+const { dbConnection, cloudinaryConfig } = require('./database/config')
 
 
 // Crear el servidor de express
@@ -15,6 +15,9 @@ app.use(cors());
 
 // Lectura y parseo del body
 app.use( express.json() );
+
+// Cloudinary
+app.use('*', cloudinaryConfig);
 
 // Base de datos
 dbConnection();
@@ -27,6 +30,7 @@ app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/login', require('./routes/auth'));
 app.use('/api/fecha', require('./routes/fecha'));
 app.use('/api/categorias', require('./routes/categorias'));
+app.use('/api/preguntas', require('./routes/preguntas'));
 
 
 app.listen( process.env.PORT, () => {

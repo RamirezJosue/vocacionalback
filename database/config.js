@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const cloudinary = require('cloudinary').v2;
+const uploader = cloudinary.uploader;
 
 const dbConnection = async() => {
     try {
@@ -16,6 +18,22 @@ const dbConnection = async() => {
 
 }
 
+
+/**
+ * Conexión a cloudinary
+ */
+
+const cloudinaryConfig = (req, res, next) => {
+    cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
+    });
+    next();
+}
+
 module.exports = {
-    dbConnection
+    dbConnection,
+    cloudinaryConfig,
+    uploader
 }
