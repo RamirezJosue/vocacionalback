@@ -3,6 +3,23 @@ const { response } = require('express');
 
 const Carrera = require('../models/carrera');
 
+
+const cargarCarreras = async(req, res = response) => {
+    try {
+        const carreras = await Carrera.find({})
+        res.json({
+            ok: true,
+            carreras
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: 'Error revise los logs...'
+        })
+    }
+}
+
 const crearCarrera = async(req, res = response) => {
     const carrera = new Carrera({
         ...req.body
@@ -26,5 +43,6 @@ const crearCarrera = async(req, res = response) => {
 
 
 module.exports = {
-    crearCarrera
+    crearCarrera,
+    cargarCarreras
 }

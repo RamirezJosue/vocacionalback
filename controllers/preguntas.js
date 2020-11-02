@@ -30,20 +30,20 @@ const cargarPreguntas = async(req, res = response) => {
 }
 
 const crearPregunta = async(req, res = response) => {
-    const file = dataUri(req).content;
+    // const file = dataUri(req).content;
     try {
-        const result = await uploader.upload(file, {
-            folder: 'pregunta',
-            use_filename: false,
-            format: 'webp',
-            eager: [
-                { width: 250, height: 250, crop: 'pad' },
-            ]
-        });
+        // const result = await uploader.upload(file, {
+        //     folder: 'pregunta',
+        //     use_filename: false,
+        //     format: 'webp',
+        //     eager: [
+        //         { width: 250, height: 250, crop: 'pad' },
+        //     ]
+        // });
 
         const pregunta = new Pregunta(req.body);
-        pregunta.img = await result.eager[0].secure_url;
-        pregunta.public_id = await result.public_id;
+        // pregunta.img = await result.eager[0].secure_url;
+        // pregunta.public_id = await result.public_id;
 
         // Guardar pregunta
         await pregunta.save();
@@ -86,33 +86,36 @@ const borrarPregunta = async (req, res= response) => {
 
 const actualizarPregunta = async( req, res = response) => {
     const id = req.params.id;
+    const  { pregunta, carrera } = req.body; 
     try {
         const preguntaDB = await Pregunta.findById(id);
-        console.log(preguntaDB);
         if (!preguntaDB) {
             return res.status(404).json({
                 ok: false,
                 msg: 'No existe una pregunta por ese id'
             })
         }
-        if (req.file) {
-            const file = dataUri(req).content;
-            const result = await uploader.upload(file, {
-                folder: 'pregunta',
-                use_filename: false,
-                format: 'webp',
-                eager: [
-                    { width: 250, height: 250, crop: 'pad' },
-                ]
-            });
-            preguntaDB.pregunta = req.body.pregunta;
-            preguntaDB.img = await result.eager[0].secure_url;
-            preguntaDB.public_id = await result.public_id;
-            preguntaDB.save();
-        } else {
-            preguntaDB.pregunta = req.body.pregunta;
-            preguntaDB.save();
-        }
+        // if (req.file) {
+        //     const file = dataUri(req).content;
+        //     const result = await uploader.upload(file, {
+        //         folder: 'pregunta',
+        //         use_filename: false,
+        //         format: 'webp',
+        //         eager: [
+        //             { width: 250, height: 250, crop: 'pad' },
+        //         ]
+        //     });
+        //     preguntaDB.pregunta = req.body.pregunta;
+        //     preguntaDB.img = await result.eager[0].secure_url;
+        //     preguntaDB.public_id = await result.public_id;
+        //     preguntaDB.save();
+        // } else {
+        //     preguntaDB.pregunta = req.body.pregunta;
+        //     preguntaDB.save();
+        // }
+        preguntaDB.pregunta = pregunta;
+        preguntaDB.carrera = carrera;
+        preguntaDB.save();
         res.json({
             ok: true,
             descripcion: preguntaDB

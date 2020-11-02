@@ -2,13 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const PreguntaSchema = Schema({
     pregunta: { type: String, required: true},
-    img: { type: String, required: true },
-    public_id: { type: String },
+    // img: { type: String, required: true },
+    // public_id: { type: String },
+    carrera: { type:  Schema.Types.ObjectId, ref: 'Carrera'},
     respuestas: [
         {
             rpta: { type: String },
-            puntos: { type: Number },
-            carrera: { type:  Schema.Types.ObjectId, ref: 'Carrera'}
+            puntos: { type: Number }
         }
     ]
 });

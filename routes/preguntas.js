@@ -20,7 +20,7 @@ const router = Router();
 router.get('/',cargarPreguntas)
 
 router.post('/',
-    multerUploads,
+    // multerUploads,
     crearPregunta
 )
 
@@ -28,7 +28,7 @@ router.delete('/:id',
     borrarPregunta
 )
 router.put('/:id',
-    multerUploads,
+    // multerUploads,
     actualizarPregunta
 )
 /**
