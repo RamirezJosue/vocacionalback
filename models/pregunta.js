@@ -7,7 +7,8 @@ const PreguntaSchema = Schema({
     respuestas: [
         {
             rpta: { type: String },
-            puntos: { type: Number }
+            puntos: { type: Number },
+            carrera: { type:  Schema.Types.ObjectId, ref: 'Carrera'}
         }
     ]
 });

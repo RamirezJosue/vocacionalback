@@ -31,6 +31,8 @@ app.use('/api/login', require('./routes/auth'));
 app.use('/api/fecha', require('./routes/fecha'));
 app.use('/api/categorias', require('./routes/categorias'));
 app.use('/api/preguntas', require('./routes/preguntas'));
+app.use('/api/carreras', require('./routes/carreras'));
+app.use('/api/resultados', require('./routes/resultados'));
 
 
 app.listen( process.env.PORT, () => {
