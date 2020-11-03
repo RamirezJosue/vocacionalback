@@ -29,6 +29,31 @@ const cargarPreguntas = async(req, res = response) => {
     }
 }
 
+const cargarTests = async(req, res = response) => {
+    const desde = Number(req.query.desde) || 0;
+    try {
+        const [ preguntas, total ] = await Promise.all([
+            Pregunta
+                .find({})
+                .skip(desde)
+                .limit(2)
+                .sort({_id: -1}),
+            Pregunta.countDocuments({})
+        ])
+        res.json({
+            ok: true,
+            preguntas,
+            total
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
+}
+
 const crearPregunta = async(req, res = response) => {
     // const file = dataUri(req).content;
     try {
@@ -224,5 +249,6 @@ module.exports = {
     borrarPregunta,
     crearRespuesta,
     actualizarRespuesta,
-    borrarRespuesta
+    borrarRespuesta,
+    cargarTests
 }

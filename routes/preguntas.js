@@ -9,7 +9,8 @@ const {
     actualizarRespuesta, 
     borrarRespuesta,
     borrarPregunta,
-    actualizarPregunta
+    actualizarPregunta,
+    cargarTests
 } = require('../controllers/preguntas');
 const { multerUploads } = require('../helpers/multer');
 
@@ -18,6 +19,7 @@ const router = Router();
 
 
 router.get('/',cargarPreguntas)
+router.get('/tests',cargarTests)
 
 router.post('/',
     // multerUploads,
