@@ -4,8 +4,9 @@ const { dataUri } = require('../helpers/multer');
 const Pregunta = require('../models/pregunta')
 
 const cargarPreguntas = async(req, res = response) => {
-    const pageSize = Number(req.query.pageSize) || 50;
-    const page = Number(req.query.page);
+    const { pageSize, page } = req.query;
+    Number(pageSize) || 10;
+    Number(page);
     try {
         const [ preguntas, total ] = await Promise.all([
             Pregunta
@@ -24,32 +25,33 @@ const cargarPreguntas = async(req, res = response) => {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Hable con el administrador'
+            msg: 'Error revise los logs......'
         })
     }
 }
 
 const cargarTests = async(req, res = response) => {
-    const desde = Number(req.query.desde) || 0;
+    const pageSize = Number(req.query.pageSize) || 6;
+    const page = Number(req.query.page);
     try {
         const [ preguntas, total ] = await Promise.all([
             Pregunta
                 .find({})
-                .skip(desde)
-                .limit(2)
-                .sort({_id: -1}),
+                .skip((page - 1) * pageSize)
+                .limit(pageSize),
             Pregunta.countDocuments({})
         ])
         res.json({
             ok: true,
             preguntas,
-            total
+            total,
+            pageSize
         })
     } catch (error) {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Hable con el administrador'
+            msg: 'Error inesperado....'
         })
     }
 }
