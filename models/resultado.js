@@ -1,13 +1,16 @@
 const { Schema, model } = require('mongoose');
 
 const ResultadoSchema = Schema({
-    usuario: { type:  Schema.Types.ObjectId, ref: 'Usuario'},
+    nombres: { type: String, required: false},
+    email: { type: String, required: false},
+    celular: { type: String, required: false },
     carreras: [
         {
             carrera: { type:  Schema.Types.ObjectId, ref: 'Carrera'},
-            puntos: { type: String, required: false},
+            puntaje: { type: Number, required: false},
         }
-    ]
+    ],
+    date: { type: Date, default: Date.now()}
 });
 
 module.exports = model('Resultado', ResultadoSchema)

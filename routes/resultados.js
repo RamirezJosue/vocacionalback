@@ -3,23 +3,27 @@
     Ruta: /api/resultados
 */
 const { Router } = require('express');
-const { check } = require('express-validator');
-const { crearResultado, cargarResultado } = require('../controllers/resultados');
-const { validarCampos } = require('../middlewares/validar-campos');
-
-const { validarJWT } = require('../middlewares/validar-jwt');
-
+const { crearResultado, cargarResultado, actualizarResultado } = require('../controllers/resultados');
 
 
 const router = Router();
 
-router.get('/',
+
+router.get('/:id',
     cargarResultado
 );
+
+// router.get('/',
+//     cargarResultado
+// );
 
 
 router.post('/',
     crearResultado
+);
+
+router.put('/:id',
+    actualizarResultado
 );
 
 
