@@ -27,4 +27,4 @@ ENV CLOUD_NAME=dd9vj0jjh
 ENV API_KEY=543636542967156
 ENV API_SECRET=CrF8v4HtlSCvAtAsTW2w2qt6IL4
 
-CMD [ "sudo node", "index.js" ]
+CMD [ "node", "index.js" ]
