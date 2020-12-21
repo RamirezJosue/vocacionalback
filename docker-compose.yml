@@ -4,7 +4,9 @@ services:
     app:
         container_name: tucarreraperu
         restart: always
-        build: .
+        build: 
+            context: .
+            dockerfile: Dockerfile
         ports: 
             - "3000:3000"
         volumes: 

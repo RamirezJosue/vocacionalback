@@ -35,6 +35,6 @@ app.use('/api/carreras', require('./routes/carreras'));
 app.use('/api/resultados', require('./routes/resultados'));
 
 
-app.listen( process.env.PORT, () => {
+app.listen( process.env.PORT || 3000, () => {
     console.log('Servidor corriendo en puerto ' + process.env.PORT);
 });
