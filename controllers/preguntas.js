@@ -161,7 +161,7 @@ const actualizarPregunta = async( req, res = response) => {
 
 
 /**
- * CRUD PREGUNTA
+ * CRUD RESPUESTA
  */
 const crearRespuesta = async(req, res) => {
     const id = req.params.id;

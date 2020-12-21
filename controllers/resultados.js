@@ -6,7 +6,6 @@ const Carrera = require('../models/carrera');
 
 const cargarResultado = async(req, res = response) => {
     const id = req.params.id;
-    console.log(id);
     try {
         // const resultadoDB = await Resultado.findById(id);
         const resultado = await Resultado.aggregate([

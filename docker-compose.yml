@@ -1,0 +1,11 @@
+version: "3"
+
+services: 
+    app:
+        container_name: tucarreraperu
+        restart: unless-stopped
+        build: .
+        ports: 
+            - "3000:3000"
+        volumes: 
+            - .:/usr/src/app
